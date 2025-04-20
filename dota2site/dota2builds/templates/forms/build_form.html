@@ -1,0 +1,16 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style_build_form.css' %}">
+<form method="POST" id="hero_form" autocomplete="off">
+    {% csrf_token %}
+    <table>
+        <tr>
+            {% for e in form %}
+            <td>
+                {{ e }}
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+</form>
+
+{{ formset.management_form }}
