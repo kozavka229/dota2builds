@@ -3,23 +3,24 @@
 
 {% block head %}
     <link rel="stylesheet" href="{% static 'css/dota2minimapheroes.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dota2minimapheroes.css' %}">
     <title>Сборки для {{ character }}</title>
 {% endblock %}
 
 {% block content %}
 <h1>Сборки для <a href="https://www.dota2.com/hero/{{ hero.slug }}" class="hero">{{ hero.name }}</a> <i class="d2mh {{ hero.slug }}"></i></h1>
-<a href="create">Создать свою</a>
+<a href="/builds/create">Создать свою</a>
 <br><br>
 {% if builds|length != 0 %}
 {% for build in builds %}
 <table>
     <tr>
         <td>
-            <h3><a href="" target="_blank">{{ build.name }}</a></h3>
+            <h3><a href="/builds/edit/{{ build.pk }}">{{ build.name }}</a></h3>
             <div>
-            {% for item in build.items.all %}
+            {% for iteminfo in build.builditeminfo_set.all %}
             <div class="item">
-                <img src="{% static 'images/items/'|add:item.image_name|add:'.png' %}" title="{{ item.name }} — {{ item.itemdescription }}" class="item-img">
+                <img src="{{ iteminfo.item.image.url }}" title="{{ iteminfo.item.name }} — {{ iteminfo.description }}" class="item-img">
             </div>
             {% endfor %}
             </div>

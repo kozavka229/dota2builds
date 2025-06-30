@@ -33,7 +33,7 @@ body {
 .item-img {
     height: 45px;
 }
-.item-img:hover {
+.hover-shadow:hover {
     box-shadow: 0px 0px 27px 10px rgba(34, 60, 80, 0.2);
 }
 

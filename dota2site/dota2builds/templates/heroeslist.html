@@ -7,7 +7,7 @@
 
 {% block content %}
 {% for hero in heroes %}
-<a href="{{ hero.slug }}">{{ hero.name }}</a>
+<a href="heroes/{{ hero.slug }}">{{ hero.name }}</a>
 <br>
 {% endfor %}
 {% endblock %}

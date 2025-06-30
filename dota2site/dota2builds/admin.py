@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Build, Hero, Item, ItemDescription
+from .models import Build, Hero, Item, BuildItemInfo
 
 
 @admin.register(Build)
@@ -17,6 +17,6 @@ class ItemAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(ItemDescription)
-class ItemDescriptionAdmin(admin.ModelAdmin):
+@admin.register(BuildItemInfo)
+class BuildItemOrder(admin.ModelAdmin):
     pass

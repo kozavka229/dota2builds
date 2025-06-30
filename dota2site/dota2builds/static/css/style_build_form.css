@@ -1,57 +1,8 @@
-.form-block {
-    margin-bottom:20px;
-}
-.form-block > p {
-    margin-bottom: 10px;
+#selected-items {
+    min-height: 30px;
+    background-color: #00008F1F;
 }
 
-.checkbox-list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-/* Общая стилизация чекбоксов */
-.checkbox-list input[type="checkbox"] {
-    width: 20px;
-    height: 20px;
-    border: 2px solid #ccc;
-    border-radius: 3px;
-    cursor: pointer;
-    transition: border-color 0.3s ease;
-}
-
-.checkbox-list input[type="checkbox"]:checked {
-    border-color: #007bff;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-
-.checkbox-list label {
-    display: flex;
-    align-items: center;
-    line-height: 1.5;
-    font-size: 16px;
-    cursor: pointer;
-}
-
-.checkbox-list label::before {
-    content: '';
-    display: inline-block;
-    width: 20px;
-    height: 20px;
-    margin-right: 10px;
-    border: 2px solid #ccc;
-    border-radius: 3px;
-    transition: border-color 0.3s ease;
-}
-
-.checkbox-list input[type="checkbox"]:checked + label::before {
-    border-color: #007bff;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='%23fff' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+#all-items .d2mi {
+    margin: 1px;
 }
