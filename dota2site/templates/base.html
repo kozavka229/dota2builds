@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+<div id="parent">
+    {% block parent-content %}
+    <div id="header">
+        {% block header %}
+        {% if user.is_authenticated %}
+        <a href="{% url 'user-profile' %}">{{ user.username }}</a>
+        {% else %}
+        <a href="{% url 'signup' %}">Регистрация</a>
+        <a href="{% url 'login' %}">Вход</a>
+        {% endif %}
+        <a href="{% url 'home' %}">Главная</a>
+        {% endblock %}
+    </div>
+    <div id="child">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <div id="footer">
+        {% block footer-content %}
+        <span>дота пупупу дота</span>
+        {% endblock %}
+    </div>
+    {% endblock %}
+</div>
+</body>
+</html>

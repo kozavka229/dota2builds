@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<title>Главная</title>
+<link rel="stylesheet" href="{% static 'css/dota2minimapheroes.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
+
+{% block content %}
+<h1 id="hello-msg">Добро пожаловать на сайт</h1>
+<br>
+
+<div id="heroes">
+<p>Герои: </p>
+{% for hero in heroes %}
+<i class="d2mh {{ hero.slug }}"></i> <a href="{% url 'hero-builds' hero.slug %}">{{ hero.name }}</a><br>
+{% endfor %}
+</div>
+
+<div id="babka">
+    <img src="{% static 'images/babka.png' %}">
+    <br><span>Хорошего дня и игры!</span>
+</div>
+{% endblock %}

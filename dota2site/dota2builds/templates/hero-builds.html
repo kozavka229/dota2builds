@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/dota2minimapheroes.css' %}">
+<link rel="stylesheet" href="{% static 'css/dota2minimapitems.css' %}">
+<link rel="stylesheet" href="{% static 'css/hero-builds.css' %}">
+<title>Сборки для {{ hero.name }}</title>
+{% endblock %}
+
+{% block content %}
+<h1>Сборки для <a href="https://www.dota2.com/hero/{{ hero.slug }}" class="hero">{{ hero.name }}</a> <i class="d2mh {{ hero.slug }}"></i></h1>
+<a href="{% url 'build-editor'%}?hero={{hero.id}}">Создать свою</a>
+<br><br>
+{% for build in builds %}
+<table>
+    <tr>
+        <td>
+            <h3 class="build-name"><a href="{% url 'build-info' build.pk %}">{{ build.name }}</a></h3>
+            <div class="build-items-block">
+                {% for iteminfo in build.itemsinfo.all %}<i class="d2mi {{ iteminfo.item.slug }}" title="{{ iteminfo.description }}"></i>{% endfor %}
+            </div>
+        </td>
+    </tr>
+</table>
+{% endfor %}
+<br>
+{% endblock %}

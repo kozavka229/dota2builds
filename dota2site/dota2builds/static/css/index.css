@@ -1,0 +1,19 @@
+#hello-msg {
+    text-align: center;
+}
+
+#heroes {
+    display: inline-block;
+}
+
+#babka {
+    display: inline-block;
+    float: right;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 60px;
+}
+
+#babka img {
+    height: 140px;
+}

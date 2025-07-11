@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block head %}
+    <title>
+{{ form.name.value  }}
+    </title>
+{% endblock %}
+
+{% block content %}
+{% include form.template_name %}
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Пользователь {{ target.username }}</title>
+{% endblock head %}
+
+{% block content %}
+<span>
+    Имя: <a>{{ target.username }}</a>
+    {% if request.user == target %}
+    <a href="{% url 'logout' %}">(Выйти)</a>
+    {% endif %}
+</span>
+<p>Количество сборок: <a>{{ builds.count }}</a></p>
+{% endblock %}

@@ -1,0 +1,27 @@
+.build-name {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.build-author {
+    font-size: 12px;
+}
+
+.item-info {
+    border-collapse:separate;
+    border-spacing: 0 25px;
+}
+
+.item-info__row {
+    vertical-align: top;
+}
+
+.item-info__row__image-name {
+    width: 150px;
+}
+
+.item-info__row__image-name > span {
+    margin-left: 5px;
+    margin-right: 20px;
+}

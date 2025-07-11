@@ -1,0 +1,11 @@
+.icon {
+	background-image: url('/static/images/minimap/minimap_icons_sheet.png');
+	background-repeat: no-repeat;
+	display: inline-block;
+}
+
+.icon.edit {
+	background-position: 0px 0px;
+	width: 25px;
+	height: 25px;
+}

@@ -4,7 +4,9 @@ from dota2builds.models import Build, BuildItemInfo
 
 
 class BuildForm(forms.ModelForm):
-    template_name = "forms/build_form.html"
+    template_name = "forms/build-form.html"
+
+    delete = forms.BooleanField(label="Удалить", required=False)
 
     class Meta:
         model = Build

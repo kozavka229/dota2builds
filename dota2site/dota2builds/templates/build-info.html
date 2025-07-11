@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/dota2minimapheroes.css' %}">
+<link rel="stylesheet" href="{% static 'css/dota2minimapitems.css' %}">
+<link rel="stylesheet" href="{% static 'css/iconsminimap.css' %}">
+<link rel="stylesheet" href="{% static 'css/build-info.css' %}">
+{% endblock head %}
+
+{% block content %}
+<p class="build-name">
+    <a href="">{{ build.name }}</a>
+    {% if build.owner == user %}
+    <a class="icon edit" href="{% url 'build-editor' build.pk %}"></a>
+    {% endif %}
+</p>
+<p class="build-author">by <a href="{% url 'user-profile' build.owner.pk %}">{{ build.owner.username }}</a></p>
+<br>
+<table class="item-info">
+    {% for iteminfo in build.itemsinfo.all %}
+    <tr class="item-info__row">
+        <td><i class="d2mi {{iteminfo.item.slug}}">&ZeroWidthSpace;</i></td>
+        <td class="item-info__row__image-name"><span>{{ iteminfo.item.name }}</span></td>
+        <td><span>{{ iteminfo.description }}</span></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Регистрация</title>
+{% endblock head %}
+
+{% block content %}
+<form method="POST" action="{% url 'signup' %}">
+    {% csrf_token %}
+    {% for field in form %}
+    <p>{{ field.label }}: {{ field }}</p>
+    {{ field.errors }}
+    {% endfor %}
+    <input type="submit">
+</form>
+{% endblock content %}

@@ -2,10 +2,12 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('create', views.create_build, name="create-build"),
-    path('edit/<int:pk>', views.edit_build, name="edit-build"),
+    path('', views.index, name='home'),
+    path('builds/<int:build_pk>', views.build_info, name="build-info"),
+    path('editor', views.build_editor, name="build-editor"),
+    path('editor/<int:build_pk>', views.build_editor, name="build-editor"),
     path('heroes/<int:hero_pk>', views.get_hero_builds, name="hero-builds"),
-    path('heroes/<slug:hero_slug>', views.get_hero_builds),
-    path('api/', include('dota2builds_api.urls'))
+    path('heroes/<slug:hero_slug>', views.get_hero_builds, name="hero-builds"),
+    path('profile', views.profile, name="user-profile"),
+    path('profile/<int:user_pk>', views.profile, name="user-profile"),
 ]
