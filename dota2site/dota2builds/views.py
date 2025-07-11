@@ -4,8 +4,10 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from loguru import logger
 
-from .forms import BuildForm, BuildItemOrderFormSet
+from dota2site import settings
+from .forms import BuildForm, BuildItemOrderFormSet, FilterBuildsForm
 from .models import Build, Hero, Item
+import utils
 
 
 def profile(request, user_pk: int = None):
@@ -20,17 +22,14 @@ def index(request):
     return render(request, 'index.html', context={'heroes': Hero.objects.all()})
 
 
-def get_hero_builds(request, hero_slug: str = None, hero_pk: int = None):
-    hero: Hero
-    if hero_slug is not None:
-        hero = get_object_or_404(Hero, slug=hero_slug)
-    elif hero_pk is not None:
-        hero = get_object_or_404(Hero, pk=hero_pk)
-    else:
-        return redirect("index")
+def get_builds(request):
+    form = FilterBuildsForm(request.GET)
+    builds = Build.objects.all()
 
-    builds = Build.objects.filter(hero=hero)
-    return render(request, 'hero-builds.html', context={'hero': hero, 'builds': builds})
+    if form.is_valid():
+        builds = form.filter(builds)
+
+    return render(request, "builds.html", context={'form': form, 'builds': builds})
 
 
 @login_required
@@ -52,7 +51,7 @@ def build_editor(request, build_pk: int = None):
             if build_form.cleaned_data.get('delete'):
                 if build is not None:
                     build.delete()
-                return redirect("hero-builds", hero_pk=build_form.cleaned_data['hero'].pk)
+                return utils.redirect_with_get_params("builds-list", hero=build_form.cleaned_data['hero'].name)
 
             build = build_form.save(commit=False)
             build.owner = request.user

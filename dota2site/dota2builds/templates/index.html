@@ -14,7 +14,7 @@
 <div id="heroes">
 <p>Герои: </p>
 {% for hero in heroes %}
-<i class="d2mh {{ hero.slug }}"></i> <a href="{% url 'hero-builds' hero.slug %}">{{ hero.name }}</a><br>
+<i class="d2mh {{ hero.slug }}"></i> <a href="{% url 'builds-list' %}?hero={{hero.name}}">{{ hero.name }}</a><br>
 {% endfor %}
 </div>
 

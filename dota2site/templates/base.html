@@ -14,7 +14,7 @@
     <div id="header">
         {% block header %}
         {% if user.is_authenticated %}
-        <a href="{% url 'user-profile' %}">{{ user.username }}</a>
+        <a href="{% url 'user-profile' %}" title="ID: {{user.pk}}">{{ user.username }}</a>
         {% else %}
         <a href="{% url 'signup' %}">Регистрация</a>
         <a href="{% url 'login' %}">Вход</a>
@@ -28,7 +28,9 @@
     </div>
     <div id="footer">
         {% block footer-content %}
-        <span>дота пупупу дота</span>
+        <span>by <a href="https://github.com/kozavka229">kozavka229</a></span>
+        <br>
+        <span>© бугага, 2025</span>
         {% endblock %}
     </div>
     {% endblock %}

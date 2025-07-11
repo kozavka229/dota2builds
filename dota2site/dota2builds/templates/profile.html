@@ -11,5 +11,5 @@
     <a href="{% url 'logout' %}">(Выйти)</a>
     {% endif %}
 </span>
-<p>Количество сборок: <a>{{ builds.count }}</a></p>
+<p>Количество сборок: <a href="{% url 'builds-list' %}?ownerid={{target.pk}}">{{ builds.count }}</a></p>
 {% endblock %}

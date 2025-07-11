@@ -15,6 +15,11 @@ from pathlib import Path
 
 load_dotenv()
 
+
+# Constants of application
+DEFAULT_COUNT_BUILDS_IN_ONE_QUERY = 25
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

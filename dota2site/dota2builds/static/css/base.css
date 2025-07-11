@@ -38,6 +38,11 @@ a:hover {
     background: #111112;
     color: #252326;
     padding: 20px;
+    text-align: right;
+}
+
+#footer a {
+    color: #660830;
 }
 
 #header {

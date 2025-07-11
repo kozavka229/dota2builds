@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/dota2minimapitems.css' %}">
+<link rel="stylesheet" href="{% static 'css/builds.css' %}">
+<title>Сборки Dota2</title>
+{% endblock head %}
+
+{% block content %}
+<h1>Сборки на героев</h1>
+<p><a href="{% url 'build-editor'%}">Создать свою</a></p>
+
+<p><button onclick="toogleFiltersVision()">Фильтры</button></p>
+
+<form method="GET" id="filter-form" style="display:none">
+    <table>
+        {% for field in form %}
+        {% if forloop.counter0|divisibleby:2 == 1 %}
+        <tr>
+            <td>{{field.label_tag}} {{ field }}</td>
+        {% else %}
+            <td>{{field.label_tag}} {{field}}</td>
+        </tr>
+        {% endif %}
+        {% endfor %}
+    </table>
+    <p><a href="{% url 'builds-list' %}">Сбросить фильтры</a></p>
+    <p><input type="submit"></p>
+</form>
+
+{% for build in builds %}
+<table>
+    <tr>
+        <td>
+            <h3 class="build-name" title="by {{ build.owner.username }}"><a href="{% url 'build-info' build.pk %}">{{ build.name }}</a></h3>
+            <div class="build-items-block">
+                {% for iteminfo in build.itemsinfo.all %}<i class="d2mi {{ iteminfo.item.slug }}" title="{{ iteminfo.description }}"></i>{% endfor %}
+            </div>
+        </td>
+    </tr>
+</table>
+{% endfor %}
+<script>
+    function toogleFiltersVision() {
+        let display = document.getElementById('filter-form').style.display;
+        document.getElementById('filter-form').style.display = (display == 'block') ? 'none' : 'block';
+    }
+</script>
+{% endblock content %}
