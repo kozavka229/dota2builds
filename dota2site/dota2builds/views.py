@@ -1,10 +1,8 @@
+from allauth.account.decorators import verified_email_required
 from django.http import HttpResponseForbidden
 from django.contrib.auth import get_user_model
-from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
-from loguru import logger
 
-from dota2site import settings
 from .forms import BuildForm, BuildItemOrderFormSet, FilterBuildsForm
 from .models import Build, Hero, Item
 import utils
@@ -32,7 +30,7 @@ def get_builds(request):
     return render(request, "builds.html", context={'form': form, 'builds': builds})
 
 
-@login_required
+@verified_email_required
 def build_editor(request, build_pk: int = None):
     build: Build | None
     if build_pk is not None:

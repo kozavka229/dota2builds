@@ -9,18 +9,21 @@
     {% endblock %}
 </head>
 <body>
+{% autoescape on %}
 <div id="parent">
     {% block parent-content %}
     <div id="header">
         {% block header %}
-        {% if user.is_authenticated %}
-        <a href="{% url 'user-profile' %}" title="ID: {{user.pk}}">{{ user.username }}</a>
-        {% else %}
-        <a href="{% url 'signup' %}">Регистрация</a>
-        <a href="{% url 'login' %}">Вход</a>
-        {% endif %}
-        <a href="{% url 'home' %}">Главная</a>
-        {% endblock %}
+        <div class="right">
+            {% if user.is_authenticated %}
+            <a href="{% url 'user-profile' %}" title="ID: {{user.pk}}">{{ user.username }}</a>
+            {% else %}
+            <a href="{% url 'account_signup' %}">Регистрация</a>
+            <a href="{% url 'account_login' %}">Вход</a>
+            {% endif %}
+            <a href="{% url 'home' %}">Главная</a>
+            {% endblock %}
+        </div>
     </div>
     <div id="child">
         {% block content %}
@@ -36,4 +39,5 @@
     {% endblock %}
 </div>
 </body>
+{% endautoescape %}
 </html>

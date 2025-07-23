@@ -5,11 +5,10 @@
 {% endblock head %}
 
 {% block content %}
-<span>
-    Имя: <a>{{ target.username }}</a>
-    {% if request.user == target %}
-    <a href="{% url 'logout' %}">(Выйти)</a>
-    {% endif %}
-</span>
+<p>Имя: <a href="{% url 'user-profile' target.pk %}">{{ target.username }}</a></p>
 <p>Количество сборок: <a href="{% url 'builds-list' %}?ownerid={{target.pk}}">{{ builds.count }}</a></p>
+{% if request.user == target %}
+<p>Email: {{ target.email }}</p>
+<p><a href="{% url 'account_logout' %}">Выйти</a></p>
+{% endif %}
 {% endblock %}

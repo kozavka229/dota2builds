@@ -5,7 +5,7 @@ from dota2site import settings
 
 
 class BuildForm(forms.ModelForm):
-    template_name = "forms/build-form.html"
+    template_name = "forms/build-account-base.html"
 
     delete = forms.BooleanField(label="Удалить", required=False)
 

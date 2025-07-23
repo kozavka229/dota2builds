@@ -1,5 +1,4 @@
 .idea
 .venv
-*.txt
 *.env
 log.log

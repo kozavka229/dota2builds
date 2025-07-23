@@ -46,8 +46,17 @@ a:hover {
 }
 
 #header {
-    background-color: #110d21;
+    background-color: #091112;
     padding: 20px;
+    padding-bottom: 40px;
+}
+
+#header > .left {
+    float: left;
+}
+
+#header > .right {
+    float: right;
     text-align: right;
 }
 
@@ -57,4 +66,12 @@ a:hover {
 
 .helptext {
     font-size: 12px;
+}
+
+.google-oauth > img {
+    width: 24px;
+}
+
+.google-oauth > img:hover {
+    filter: brightness(1.5);
 }
