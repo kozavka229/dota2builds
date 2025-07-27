@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'dota2site.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', f'dota2site.settings.{os.getenv("ENV")}')
 
 application = get_asgi_application()

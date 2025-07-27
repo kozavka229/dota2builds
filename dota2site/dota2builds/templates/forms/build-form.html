@@ -19,7 +19,8 @@
     </div>
 
     {{ formset.management_form }}
-    {% for f in formset %}<i class="forminfo" data-item="{{ f.item.value }}" data-desc="{{ f.description.value }}" data-pk="{{ f.id.value }}" data-build="{{ f.build.value }}"></i>{% endfor %}
+    <script>alert('aa' + '{{formset.initial.id}}')</script>
+    {% for f in formset %}<div class="forminfo" data-item="{{ f.item.value }}" data-desc="{{ f.description.value }}" data-pk="{{ f.id.value }}" data-build="{{ f.build.value }}"></div>{% endfor %}
 
     <br><br>
     {% if form.name.value %}

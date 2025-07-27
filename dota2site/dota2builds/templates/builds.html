@@ -1,8 +1,9 @@
-{% extends 'base.html' %}
+{% extends 'main.html' %}
 {% load static %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/dota2minimapitems.css' %}">
+<link rel="stylesheet" href="{% static 'css/dota2minimapheroes.css' %}">
 <link rel="stylesheet" href="{% static 'css/builds.css' %}">
 <title>Сборки Dota2</title>
 {% endblock head %}
@@ -33,7 +34,7 @@
 <table>
     <tr>
         <td>
-            <h3 class="build-name" title="by {{ build.owner.username }}"><a href="{% url 'build-info' build.pk %}">{{ build.name }}</a></h3>
+            <h3 class="build-name" title="by {{ build.owner.username }}"><i class="d2mh {{build.hero.slug}}"></i> <a href="{% url 'build-info' build.pk %}">{{ build.name }}</a></h3>
             <div class="build-items-block">
                 {% for iteminfo in build.itemsinfo.all %}<i class="d2mi {{ iteminfo.item.slug }}" title="{{ iteminfo.description }}"></i>{% endfor %}
             </div>

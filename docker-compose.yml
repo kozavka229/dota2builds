@@ -1,11 +1,37 @@
-version: "3.9"
-
 services:
-  backend:
-    build: .
-    container_name: dota2builds-backend
-    command: python3 manage.py runserver 0.0.0.0:8000
+  db:
+    image: postgres
+    container_name: db
+    restart: unless-stopped
     volumes:
-      - .:/app
-    ports:
-      - 8000:8000
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - net2
+
+  web:
+    container_name: web
+    command: gunicorn --bind 0.0.0.0:8000 dota2site.wsgi
+    volumes:
+      - static_volume:/staticfiles
+    depends_on:
+      - db
+    networks:
+      - net1
+      - net2
+
+  nginx:
+    container_name: nginx
+    volumes:
+      - static_volume:/staticfiles
+    depends_on:
+      - web
+    networks:
+      - net1
+
+networks:
+  net1:
+  net2:
+
+volumes:
+  static_volume:
+  pgdata:

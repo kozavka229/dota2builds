@@ -2,6 +2,7 @@ from allauth.account.decorators import verified_email_required
 from django.http import HttpResponseForbidden
 from django.contrib.auth import get_user_model
 from django.shortcuts import render, get_object_or_404, redirect
+from loguru import logger
 
 from .forms import BuildForm, BuildItemOrderFormSet, FilterBuildsForm
 from .models import Build, Hero, Item
@@ -64,6 +65,11 @@ def build_editor(request, build_pk: int = None):
 
                 build_formset.save()
                 return redirect("build-info", build_pk=build.pk)
+            else:
+                logger.debug(build_formset.errors)
+
+        else:
+            logger.debug(build_form.errors)
 
     return render(request, 'build-editor.html', {
         "form": build_form,

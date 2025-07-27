@@ -1,5 +1,5 @@
 .d2mi {
-	background-image: url('/static/images/minimap/minimap_item_sheet.png');
+	background-image: url('../images/minimap/minimap_item_sheet.png');
 	background-repeat: no-repeat;
 	display: inline-block;
 	width: 40px;

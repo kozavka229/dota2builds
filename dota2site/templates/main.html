@@ -6,6 +6,7 @@
     <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% block head %}
+    <title>{% block head_title %}{% endblock head_title %}</title>
     {% endblock %}
 </head>
 <body>
@@ -16,11 +17,12 @@
         {% block header %}
         <div class="right">
             {% if user.is_authenticated %}
-            <a href="{% url 'user-profile' %}" title="ID: {{user.pk}}">{{ user.username }}</a>
+            <a href="{% url 'user-profile' %}" title="Имя: {{user.username}}&#013;ID: {{user.pk}}">Профиль</a>
             {% else %}
             <a href="{% url 'account_signup' %}">Регистрация</a>
             <a href="{% url 'account_login' %}">Вход</a>
             {% endif %}
+            <a href="{% url 'builds-list'%}">Сборки</a>
             <a href="{% url 'home' %}">Главная</a>
             {% endblock %}
         </div>

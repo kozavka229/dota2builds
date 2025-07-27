@@ -20,8 +20,8 @@ from django.urls import path, include
 
 from dota2site import settings
 
-urlpatterns = ([
+urlpatterns = [
     path('', include('dota2builds.urls')),
     path('admin/', admin.site.urls),
     path('auth/', include('allauth.urls')),
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
+]

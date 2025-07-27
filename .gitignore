@@ -1,4 +1,6 @@
-.idea
 .venv
-*.env
-log.log
+dota2site/staticfiles
+.idea
+dev.env
+prod.env
+dota2site/log.log

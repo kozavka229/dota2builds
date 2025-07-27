@@ -12,27 +12,30 @@ function createInputs(form, prefix, items, infos) {
         return input;
     };
 
-    const makeAll = (index, el, del) => {
-        form.appendChild(make(index, 'item', el.dataset.item));
-        form.appendChild(make(index, 'description', el.dataset.desc));
-        form.appendChild(make(index, 'ORDER', index));
-        form.appendChild(make(index, 'build', build));
+    const makeAll = (el, del) => {
+        form.appendChild(make(total_forms, 'item', el.dataset.item));
+        form.appendChild(make(total_forms, 'description', el.dataset.desc || ''));
+        form.appendChild(make(total_forms, 'id', el.dataset.pk || ''));
+        form.appendChild(make(total_forms, 'ORDER', total_forms));
+        form.appendChild(make(total_forms, 'build', (el.dataset.pk) ? build : ''));
 
-        const pk = infos[index]?.dataset.pk || '';
-        form.appendChild(make(index, 'id', pk));
-
-        if (del) form.appendChild(make(index, 'DELETE', 'on'));
+        if (del) form.appendChild(make(total_forms, 'DELETE', 'on'));
 
         total_forms++;
     };
 
-    items.forEach((el, index) => {
-        makeAll(index, el, false);
+    let used_pk = [];
+    items.forEach((el) => {
+        let pk = el.dataset.pk;
+        if (pk)
+            used_pk.push(pk)
+
+        makeAll(el, false);
     });
 
-    infos.forEach((el, index) => {
-        if (index < items.length) return;
-        makeAll(index, el, true);
+    infos.forEach((el) => {
+        if (!used_pk.includes(el.dataset.pk))
+            makeAll(el, true);
     });
 
     return total_forms;
@@ -66,6 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".forminfo").forEach((el, index) => {
         const item = document.querySelector(`.d2mi[data-item="${el.dataset.item}"]`);
         item.dataset.desc = el.dataset.desc;
+        item.dataset.pk = el.dataset.pk;
         selectedItems.appendChild(item);
     });
 });
