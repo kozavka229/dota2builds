@@ -1,8 +1,11 @@
 import os.path
 
 from loguru import logger
+from pathlib import Path
 
-from . import BASE_DIR
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+DEFAULT_COUNT_BUILDS_IN_ONE_QUERY = 25
 
 # Application definition
 

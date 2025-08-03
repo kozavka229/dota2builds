@@ -18,8 +18,6 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
-from dota2site import settings
-
 urlpatterns = [
     path('', include('dota2builds.urls')),
     path('admin/', admin.site.urls),

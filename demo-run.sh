@@ -1,8 +1,6 @@
-chmod +x init.sh
-./init.sh
-
 cp example.env dev.env
-./dev.sh build
-./dev.sh up -d
+chmod +x ./dota2site/entrypoint.sh
+make run
 
-./dbdump/restore.sh ./dbdump/db.sql postgres dota2site
+chmod +x ./dbdump/restore.sh
+./dbdump/restore.sh "./dbdump/db.sql"

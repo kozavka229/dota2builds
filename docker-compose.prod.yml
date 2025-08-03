@@ -1,23 +1,47 @@
 services:
   db:
+    image: postgres
+    container_name: db
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASSWORD}
+    restart: unless-stopped
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    networks:
+      - net2
+
+  web:
+    build: ./dota2site
+    command: bash -c "python3 manage.py collectstatic --no-input && gunicorn -b 0.0.0.0:8000 dota2site.wsgi"
+    container_name: web
+    volumes:
+      - static_volume:/app/staticfiles
     env_file:
       - prod.env
+    depends_on:
+      - db
+    networks:
+      - net1
+      - net2
 
   nginx:
+    container_name: nginx
     build: nginx
+    volumes:
+      - static_volume:/staticfiles
+    depends_on:
+      - web
+    networks:
+      - net1
     ports:
       - "80:80"
 
-  web:
-    build:
-      context: ./dota2site
-      args:
-        ENV: prod
-    environment:
-      ENV: prod
-    env_file:
-      - prod.env
+networks:
+  net1:
+  net2:
+
+volumes:
+  static_volume:
+  pgdata:
