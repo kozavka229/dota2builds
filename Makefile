@@ -22,7 +22,9 @@ down:
 	${COMPOSE} down
 
 collectstatic:
+	${COMPOSE} up web -d
 	docker exec web python3 manage.py collectstatic --no-input
+	${COMPOSE} down web
 
 help:
 	@echo "Environment:"
