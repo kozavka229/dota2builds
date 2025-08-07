@@ -1,5 +1,6 @@
 # <img src="./dota2site/static/favicon.ico" alt="site icon" style="width:25px;"/> DOTA2BUILDS site
 <p>pet-project</p>
+https://kozavka229.pythonanywhere.com/
 <img src="./images/main.jpg" alt="build editor image" style="width:300px;"/>
 
 ## How to run
