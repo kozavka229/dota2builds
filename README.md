@@ -22,10 +22,7 @@ chmod +x demo-run.sh && ./demo-run.sh
 ### Features
 - Users can login by login+password and by social accounts in ***github.com*** (require set in [.env](./example.env))
 - ***Email verification*** of users
-- Loggined users can create builds with ***build editor***:<br>
-<img src="./images/build-editor.jpg" alt="build editor image" style="width:300px;"/>
-- View ***filters*** for builds:<br>
-<img src="./images/view-filters.jpg" alt="builds filters image" style="width:300px;"/>
-- Users profiles:<br>
-<img src="./images/profile.jpg" alt="profile image" style="width:300px;"/>
+- Loggined users can create builds with ***build editor***:<br><img src="./images/build-editor.jpg" alt="build editor image" style="width:300px;"/>
+- View ***filters*** for builds:<br><img src="./images/view-filters.jpg" alt="builds filters image" style="width:300px;"/>
+- Users profiles:<br><img src="./images/profile.jpg" alt="profile image" style="width:300px;"/>
 
