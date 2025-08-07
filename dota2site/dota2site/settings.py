@@ -117,6 +117,7 @@ DB_USER = os.getenv("DB_USER", "")
 DB_PASSWORD = os.getenv("DB_PASSWORD", "")
 DB_HOST = os.getenv("DB_HOST", "")
 DB_PORT = int(os.getenv("DB_PORT", 5432))
+DB_ENGINE = os.getenv("DB_ENGINE", "postgresql")
 
 DB_SETUP = DB_NAME and DB_USER and DB_PASSWORD
 if not DB_SETUP:
@@ -124,7 +125,7 @@ if not DB_SETUP:
 
 DATABASES = {
     'default': {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": f"django.db.backends.{DB_ENGINE}",
         "NAME": DB_NAME,
         "USER": DB_USER,
         "PASSWORD": DB_PASSWORD,
