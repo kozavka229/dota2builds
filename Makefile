@@ -1,4 +1,4 @@
-.PHONY: run build up down collectstatic help
+.PHONY: run build up down collectstatic restore-db help
 
 ENV ?= dev
 COMPOSE_FILE ?= $(if $(filter-out dev, ${ENV}),docker-compose.${ENV}.yml,docker-compose.yml)
@@ -26,6 +26,11 @@ collectstatic:
 	docker exec web python3 manage.py collectstatic --no-input
 	${COMPOSE} down web
 
+restore-db:
+	docker cp "./dbdump/db.json" web:/tmp/db.json
+	@sleep 3
+	docker exec web bash -c "python manage.py loaddata /tmp/db.json"
+
 help:
 	@echo "Environment:"
 	@echo "  ENV: текущее окружение (${ENV})"
@@ -36,3 +41,5 @@ help:
 	@echo "  build: Собрать"
 	@echo "  up: Запустить"
 	@echo "  down: Остановить"
+	@echo "  collectstatic: Вызов collectstatic в web контейнере"
+	@echo "  restore-db: Вызов loaddata dbdump/db.json в web контейнере"
